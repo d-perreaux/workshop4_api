@@ -70,7 +70,7 @@ namespace Workshop_API.Migrations
             modelBuilder.Entity("api.Models.Advice", b =>
                 {
                     b.HasOne("api.Models.Product", "Product")
-                        .WithMany("Advices")
+                        .WithMany("AdvicesBase")
                         .HasForeignKey("ProductId");
 
                     b.Navigation("Product");
@@ -78,7 +78,7 @@ namespace Workshop_API.Migrations
 
             modelBuilder.Entity("api.Models.Product", b =>
                 {
-                    b.Navigation("Advices");
+                    b.Navigation("AdvicesBase");
                 });
 #pragma warning restore 612, 618
         }

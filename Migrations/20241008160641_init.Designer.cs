@@ -12,7 +12,7 @@ using api.Data;
 namespace Workshop_API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241008080757_init")]
+    [Migration("20241008160641_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -73,7 +73,7 @@ namespace Workshop_API.Migrations
             modelBuilder.Entity("api.Models.Advice", b =>
                 {
                     b.HasOne("api.Models.Product", "Product")
-                        .WithMany("Advices")
+                        .WithMany("AdvicesBase")
                         .HasForeignKey("ProductId");
 
                     b.Navigation("Product");
@@ -81,7 +81,7 @@ namespace Workshop_API.Migrations
 
             modelBuilder.Entity("api.Models.Product", b =>
                 {
-                    b.Navigation("Advices");
+                    b.Navigation("AdvicesBase");
                 });
 #pragma warning restore 612, 618
         }

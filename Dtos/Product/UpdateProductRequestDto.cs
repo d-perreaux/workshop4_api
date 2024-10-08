@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 
 namespace api.Dtos.Product
 {
-    public class ProductDto
+    public class UpdateProductRequestDto
     {
-        public int? ProductId { get; set; }
         public string Name { get; set; } = string.Empty;
         public int CIP { get; set; }
-
     }
 }

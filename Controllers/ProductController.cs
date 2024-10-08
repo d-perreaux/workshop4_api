@@ -49,5 +49,22 @@ namespace api.Controllers
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetById), new { id = productModel.ProductId }, productModel.ToProductDto());
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        public IActionResult Update([FromRoute] int id, [FromBody] UpdateProductRequestDto updateDto){
+            var productModel = _context.Product.FirstOrDefault(x => x.ProductId == id);
+
+            if(productModel == null){
+                return NotFound();
+            }
+
+            productModel.Name = updateDto.Name;
+            productModel.CIP = updateDto.CIP;
+
+            _context.SaveChanges();
+
+            return Ok(productModel.ToProductDto());
+        }
     }
 }

@@ -12,7 +12,7 @@ using api.Data;
 namespace Workshop_API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241008050004_init")]
+    [Migration("20241008080757_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -57,6 +57,9 @@ namespace Workshop_API.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ProductId"));
+
+                    b.Property<int>("CIP")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

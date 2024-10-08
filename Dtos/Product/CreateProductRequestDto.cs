@@ -8,5 +8,6 @@ namespace api.Dtos.Product
     public class CreateProductRequestDto
     {
         public string Name { get; set; } = string.Empty;
+        public int CIP { get; set; }
     }
 }

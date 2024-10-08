@@ -14,12 +14,14 @@ namespace api.Mappers
             return new ProductDto{
                 ProductId = productModel.ProductId,
                 Name = productModel.Name,
+                CIP = productModel.CIP,
             };
         }
 
         public static Product ToProductFromCreateDto(this CreateProductRequestDto productDto){
             return new Product{
-                Name = productDto.Name
+                Name = productDto.Name,
+                CIP = productDto.CIP,
             };
         }
     }

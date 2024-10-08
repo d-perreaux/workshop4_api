@@ -16,5 +16,11 @@ namespace api.Mappers
                 Name = productModel.Name,
             };
         }
+
+        public static Product ToProductFromCreateDto(this CreateProductRequestDto productDto){
+            return new Product{
+                Name = productDto.Name
+            };
+        }
     }
 }

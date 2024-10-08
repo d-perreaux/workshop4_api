@@ -37,9 +37,11 @@ namespace api.Data
             // PrescriptionProduct
             modelBuilder.Entity<PrescriptionProduct>().HasKey(pp => new { pp.PrescriptionId, pp.ProductId });
 
-            modelBuilder.Entity<PrescriptionProduct>().HasOne(pp => pp.Prescription).WithMany(p => p.PrescriptionProducts).HasForeignKey(pp => pp.PrescriptionId);
+            modelBuilder.Entity<PrescriptionProduct>().HasOne(pp => pp.Prescription).WithMany(p => p.PrescriptionProducts).HasForeignKey(pp => pp.PrescriptionId)
+            .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<PrescriptionProduct>().HasOne(pp => pp.Product).WithMany(p => p.PrescriptionProducts).HasForeignKey(pp => pp.ProductId);
+            modelBuilder.Entity<PrescriptionProduct>().HasOne(pp => pp.Product).WithMany(p => p.PrescriptionProducts).HasForeignKey(pp => pp.ProductId)
+            .OnDelete(DeleteBehavior.Restrict);
 
             // PrescriptionProductAdvice
             modelBuilder.Entity<PrescriptionProductAdvice>().HasKey(ppa => new { ppa.PrescriptionId, ppa.ProductId, ppa.AdviceId });
@@ -47,12 +49,14 @@ namespace api.Data
             modelBuilder.Entity<PrescriptionProductAdvice>()
             .HasOne(ppa => ppa.PrescriptionProduct)
             .WithMany(pp => pp.PrescriptionProductAdvices)
-            .HasForeignKey(ppa => new { ppa.PrescriptionId, ppa.ProductId });
+            .HasForeignKey(ppa => new { ppa.PrescriptionId, ppa.ProductId })
+            .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<PrescriptionProductAdvice>()
                 .HasOne(ppa => ppa.Advice)
                 .WithMany(a => a.PrescriptionProductAdvices)
-                .HasForeignKey(ppa => ppa.AdviceId);
+                .HasForeignKey(ppa => ppa.AdviceId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
         }

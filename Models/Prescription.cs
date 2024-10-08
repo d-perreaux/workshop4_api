@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace api.Models {
     public class Prescription {
         public int? PrescriptionId { get; set; }
-        public int PharmacieId { get; set; }
+        public int PharmacyId { get; set; }
         public Pharmacy Pharmacy { get; set; }
         public List<PrescriptionProduct> PrescriptionProducts { get; set; } = new List<PrescriptionProduct>();
 

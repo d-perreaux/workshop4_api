@@ -15,6 +15,9 @@ namespace api.Mappers
                 ProductId = productModel.ProductId,
                 Name = productModel.Name,
                 CIP = productModel.CIP,
+                DCI = productModel.DCI,
+                Dosage = productModel.Dosage,
+                FlagIsDelete = productModel.FlagIsDelete
             };
         }
 
@@ -22,6 +25,9 @@ namespace api.Mappers
             return new Product{
                 Name = productDto.Name,
                 CIP = productDto.CIP,
+                DCI = productDto.DCI,
+                Dosage = productDto.Dosage,
+                FlagIsDelete = productDto.FlagIsDelete
             };
         }
     }

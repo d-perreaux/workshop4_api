@@ -12,8 +12,8 @@ using api.Data;
 namespace Workshop_API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241008193358_init")]
-    partial class init
+    [Migration("20241008202345_SeedProductData")]
+    partial class SeedProductData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,11 +47,11 @@ namespace Workshop_API.Migrations
 
             modelBuilder.Entity("api.Models.Pharmacy", b =>
                 {
-                    b.Property<int?>("PharmacyId")
+                    b.Property<int>("PharmacyId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("PharmacyId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PharmacyId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -60,6 +60,28 @@ namespace Workshop_API.Migrations
                     b.HasKey("PharmacyId");
 
                     b.ToTable("Pharmacy");
+
+                    b.HasData(
+                        new
+                        {
+                            PharmacyId = 1,
+                            Name = "Pharmacie de l'Eurotéléport"
+                        },
+                        new
+                        {
+                            PharmacyId = 2,
+                            Name = "Pharmacie de la Mitterie"
+                        },
+                        new
+                        {
+                            PharmacyId = 3,
+                            Name = "Pharmacie de la Vigne"
+                        },
+                        new
+                        {
+                            PharmacyId = 4,
+                            Name = "Pharmacie Art Nouveau"
+                        });
                 });
 
             modelBuilder.Entity("api.Models.Prescription", b =>
@@ -115,14 +137,25 @@ namespace Workshop_API.Migrations
 
             modelBuilder.Entity("api.Models.Product", b =>
                 {
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ProductId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
                     b.Property<int>("CIP")
                         .HasColumnType("int");
+
+                    b.Property<string>("DCI")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Dosage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("FlagIsDelete")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -131,6 +164,26 @@ namespace Workshop_API.Migrations
                     b.HasKey("ProductId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            CIP = 1234567,
+                            DCI = "Paracetamol",
+                            Dosage = "500mg",
+                            FlagIsDelete = false,
+                            Name = "Doliprane"
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            CIP = 2345678,
+                            DCI = "Ibuprofen",
+                            Dosage = "400mg",
+                            FlagIsDelete = false,
+                            Name = "Advil"
+                        });
                 });
 
             modelBuilder.Entity("api.Models.ProductAdvice", b =>

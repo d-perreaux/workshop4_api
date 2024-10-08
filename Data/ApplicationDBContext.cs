@@ -58,6 +58,20 @@ namespace api.Data
                 .HasForeignKey(ppa => ppa.AdviceId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+
+            // SEEDING
+            modelBuilder.Entity<Pharmacy>().HasData(
+                new Pharmacy { PharmacyId = 1, Name = "Pharmacie de l'Eurotéléport" },
+                new Pharmacy { PharmacyId = 2, Name = "Pharmacie de la Mitterie" },
+                new Pharmacy { PharmacyId = 3, Name = "Pharmacie de la Vigne" },
+                new Pharmacy { PharmacyId = 4, Name = "Pharmacie Art Nouveau" }
+            );
+
+            modelBuilder.Entity<Product>().HasData(
+                new Product { ProductId = 1, Name = "Doliprane", CIP = 1234567, DCI = "Paracetamol", Dosage = "500mg", FlagIsDelete = false },
+                new Product { ProductId = 2, Name = "Advil", CIP = 2345678, DCI = "Ibuprofen", Dosage = "400mg", FlagIsDelete = false }
+            );
+
             base.OnModelCreating(modelBuilder);
         }
     }

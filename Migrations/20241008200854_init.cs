@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Workshop_API.Migrations
 {
     /// <inheritdoc />
@@ -142,6 +144,17 @@ namespace Workshop_API.Migrations
                         principalTable: "PrescriptionProducts",
                         principalColumns: new[] { "PrescriptionId", "ProductId" },
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Pharmacy",
+                columns: new[] { "PharmacyId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Pharmacie de l'Eurotéléport" },
+                    { 2, "Pharmacie de la Mitterie" },
+                    { 3, "Pharmacie de la Vigne" },
+                    { 4, "Pharmacie Art Nouveau" }
                 });
 
             migrationBuilder.CreateIndex(

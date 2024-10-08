@@ -8,6 +8,13 @@ namespace api.Dtos.Product
     public class CreateProductRequestDto
     {
         public string Name { get; set; } = string.Empty;
+
         public int CIP { get; set; }
+
+        public string DCI { get; set; } = string.Empty;
+
+        public string Dosage { get; set; } = string.Empty;
+
+        public bool FlagIsDelete { get; set; } = false;
     }
 }

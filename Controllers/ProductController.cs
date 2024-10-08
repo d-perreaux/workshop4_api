@@ -63,6 +63,9 @@ namespace api.Controllers
 
             productModel.Name = updateDto.Name;
             productModel.CIP = updateDto.CIP;
+            productModel.DCI = updateDto.DCI;
+            productModel.Dosage = updateDto.Dosage;
+            productModel.FlagIsDelete = updateDto.FlagIsDelete;
 
             await _context.SaveChangesAsync();
 

@@ -8,6 +8,7 @@ namespace api.Models {
         public int? AdviceId { get; set; }
         public string Name { get; set; } = string.Empty;
         public DateTime CreatedOn { get; set; } = DateTime.Now;
-        public Product? Product { get; set; }
+        public List<ProductAdvice>? ProductAdvices { get; set; } = new List<ProductAdvice>();
+        public List<PrescriptionProductAdvice>? PrescriptionProductAdvices = new List<PrescriptionProductAdvice>();
     }
 }

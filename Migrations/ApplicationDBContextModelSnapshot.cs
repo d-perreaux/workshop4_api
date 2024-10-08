@@ -22,13 +22,13 @@ namespace Workshop_API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("api.Models.Conseil", b =>
+            modelBuilder.Entity("api.Models.Advice", b =>
                 {
-                    b.Property<int?>("ConseilId")
+                    b.Property<int?>("AdviceId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ConseilId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("AdviceId"));
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -37,45 +37,45 @@ namespace Workshop_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProduitId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
-                    b.HasKey("ConseilId");
+                    b.HasKey("AdviceId");
 
-                    b.HasIndex("ProduitId");
+                    b.HasIndex("ProductId");
 
-                    b.ToTable("Conseil");
+                    b.ToTable("Advice");
                 });
 
-            modelBuilder.Entity("api.Models.Produit", b =>
+            modelBuilder.Entity("api.Models.Product", b =>
                 {
-                    b.Property<int?>("ProduitId")
+                    b.Property<int?>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ProduitId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ProductId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProduitId");
+                    b.HasKey("ProductId");
 
-                    b.ToTable("Produit");
+                    b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("api.Models.Conseil", b =>
+            modelBuilder.Entity("api.Models.Advice", b =>
                 {
-                    b.HasOne("api.Models.Produit", "Produit")
-                        .WithMany("Conseils")
-                        .HasForeignKey("ProduitId");
+                    b.HasOne("api.Models.Product", "Product")
+                        .WithMany("Advices")
+                        .HasForeignKey("ProductId");
 
-                    b.Navigation("Produit");
+                    b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("api.Models.Produit", b =>
+            modelBuilder.Entity("api.Models.Product", b =>
                 {
-                    b.Navigation("Conseils");
+                    b.Navigation("Advices");
                 });
 #pragma warning restore 612, 618
         }

@@ -12,7 +12,7 @@ namespace api.Data {
             
         }
 
-        public DbSet<Produit> Produit { get; set; }
-        public DbSet<Conseil> Conseil { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Advice> Advice { get; set; }
     }
 }

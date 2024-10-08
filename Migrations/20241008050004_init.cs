@@ -12,52 +12,52 @@ namespace Workshop_API.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Produit",
+                name: "Product",
                 columns: table => new
                 {
-                    ProduitId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Produit", x => x.ProduitId);
+                    table.PrimaryKey("PK_Product", x => x.ProductId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Conseil",
+                name: "Advice",
                 columns: table => new
                 {
-                    ConseilId = table.Column<int>(type: "int", nullable: false)
+                    AdviceId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ProduitId = table.Column<int>(type: "int", nullable: true)
+                    ProductId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Conseil", x => x.ConseilId);
+                    table.PrimaryKey("PK_Advice", x => x.AdviceId);
                     table.ForeignKey(
-                        name: "FK_Conseil_Produit_ProduitId",
-                        column: x => x.ProduitId,
-                        principalTable: "Produit",
-                        principalColumn: "ProduitId");
+                        name: "FK_Advice_Product_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Product",
+                        principalColumn: "ProductId");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Conseil_ProduitId",
-                table: "Conseil",
-                column: "ProduitId");
+                name: "IX_Advice_ProductId",
+                table: "Advice",
+                column: "ProductId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Conseil");
+                name: "Advice");
 
             migrationBuilder.DropTable(
-                name: "Produit");
+                name: "Product");
         }
     }
 }

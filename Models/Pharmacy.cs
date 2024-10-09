@@ -8,6 +8,6 @@ namespace api.Models {
         public int PharmacyId { get; set; }
         public string Name { get; set; } = string.Empty;
 
-        public List<Prescription>? Prescriptions { get; set;} = new List<Prescription>();
+        public List<Prescription> Prescriptions { get; set;} = new List<Prescription>();
     }
 }

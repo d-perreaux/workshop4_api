@@ -88,5 +88,25 @@ namespace api.Controllers
             return NoContent();
         }
 
+        // GET: api/products/{id}/advices
+        [HttpGet("{id}/advices")]
+        public async Task<IActionResult> GetAdvicesByProductId([FromRoute] int id)
+        {
+            var product = await _context.Product
+                .Include(p => p.ProductAdvices)
+                    .ThenInclude(pa => pa.Advice)
+                .FirstOrDefaultAsync(p => p.ProductId == id && !p.FlagIsDelete);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            var advices = product.ProductAdvices.Select(pa => pa.Advice.ToAdviceDto());
+
+            return Ok(advices);
+        }
+
+
     }
 }

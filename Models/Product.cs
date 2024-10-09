@@ -11,7 +11,7 @@ namespace api.Models {
         public string DCI { get; set; }
         public string Dosage { get; set; }
         public bool FlagIsDelete { get; set; }
-        public List<ProductAdvice>? ProductAdvices { get; set;} = new List<ProductAdvice>();
-        public List<PrescriptionProduct>? PrescriptionProducts { get; set;} = new List<PrescriptionProduct>();
+        public List<ProductAdvice> ProductAdvices { get; set;} = new List<ProductAdvice>();
+        public List<PrescriptionProduct> PrescriptionProducts { get; set;} = new List<PrescriptionProduct>();
     }
 }

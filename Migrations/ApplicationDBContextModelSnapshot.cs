@@ -24,22 +24,66 @@ namespace Workshop_API.Migrations
 
             modelBuilder.Entity("api.Models.Advice", b =>
                 {
-                    b.Property<int?>("AdviceId")
+                    b.Property<int>("AdviceId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("AdviceId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdviceId"));
 
-                    b.Property<DateTime>("CreatedOn")
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DateEnd")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<DateTime>("DateStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("FlagIsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AdviceId");
 
                     b.ToTable("Advice");
+
+                    b.HasData(
+                        new
+                        {
+                            AdviceId = 1,
+                            Content = "Pendant les repas",
+                            DateStart = new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1879),
+                            FlagIsDeleted = false,
+                            Type = "Posologie"
+                        },
+                        new
+                        {
+                            AdviceId = 2,
+                            Content = "Se rincer la bouche après utilisation",
+                            DateStart = new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1883),
+                            FlagIsDeleted = false,
+                            Type = "Précaution"
+                        },
+                        new
+                        {
+                            AdviceId = 3,
+                            Content = "Pas d'activité physique intense",
+                            DateStart = new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1885),
+                            FlagIsDeleted = false,
+                            Type = "Précaution"
+                        },
+                        new
+                        {
+                            AdviceId = 4,
+                            Content = "Uniquement le matin",
+                            DateStart = new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1888),
+                            FlagIsDeleted = false,
+                            Type = "Précaution"
+                        });
                 });
 
             modelBuilder.Entity("api.Models.Pharmacy", b =>
@@ -180,6 +224,33 @@ namespace Workshop_API.Migrations
                             Dosage = "400mg",
                             FlagIsDelete = false,
                             Name = "Advil"
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            CIP = 2345679,
+                            DCI = "Propionate de fluticasone",
+                            Dosage = "250µg",
+                            FlagIsDelete = false,
+                            Name = "Flixotide"
+                        },
+                        new
+                        {
+                            ProductId = 4,
+                            CIP = 2345677,
+                            DCI = "Prednisolone",
+                            Dosage = "20mg",
+                            FlagIsDelete = false,
+                            Name = "Solupred"
+                        },
+                        new
+                        {
+                            ProductId = 5,
+                            CIP = 2345677,
+                            DCI = "Lévofloxaxine ",
+                            Dosage = "500mg",
+                            FlagIsDelete = false,
+                            Name = "Tavanic"
                         });
                 });
 
@@ -196,6 +267,18 @@ namespace Workshop_API.Migrations
                     b.HasIndex("AdviceId");
 
                     b.ToTable("ProductAdvice");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 4,
+                            AdviceId = 1
+                        },
+                        new
+                        {
+                            ProductId = 4,
+                            AdviceId = 4
+                        });
                 });
 
             modelBuilder.Entity("api.Models.Prescription", b =>

@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace api.Dtos.Advice
 {
-    public class AdviceDto
-    {
-        public int AdviceId { get; set; }
+    public class UpdateAdviceRequestDto {
+
         public string Content { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
         public DateTime DateStart { get; set; }

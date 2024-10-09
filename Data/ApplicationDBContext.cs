@@ -69,8 +69,56 @@ namespace api.Data
 
             modelBuilder.Entity<Product>().HasData(
                 new Product { ProductId = 1, Name = "Doliprane", CIP = 1234567, DCI = "Paracetamol", Dosage = "500mg", FlagIsDelete = false },
-                new Product { ProductId = 2, Name = "Advil", CIP = 2345678, DCI = "Ibuprofen", Dosage = "400mg", FlagIsDelete = false }
+                new Product { ProductId = 2, Name = "Advil", CIP = 2345678, DCI = "Ibuprofen", Dosage = "400mg", FlagIsDelete = false },
+                new Product { ProductId = 3, Name = "Flixotide", CIP = 2345679, DCI = "Propionate de fluticasone", Dosage = "250µg", FlagIsDelete = false },
+                new Product { ProductId = 4, Name = "Solupred", CIP = 2345677, DCI = "Prednisolone", Dosage = "20mg", FlagIsDelete = false },
+                new Product { ProductId = 5, Name = "Tavanic", CIP = 2345677, DCI = "Lévofloxaxine ", Dosage = "500mg", FlagIsDelete = false }
             );
+
+            modelBuilder.Entity<Advice>().HasData(
+                new Advice
+                {
+                    AdviceId = 1,
+                    Content = "Pendant les repas",
+                    Type = "Posologie",
+                    DateStart = DateTime.Now,
+                    DateEnd = null,
+                    FlagIsDeleted = false
+                },
+                new Advice
+                {
+                    AdviceId = 2,
+                    Content = "Se rincer la bouche après utilisation",
+                    Type = "Précaution",
+                    DateStart = DateTime.Now,
+                    DateEnd = null,
+                    FlagIsDeleted = false
+                },
+                new Advice
+                {
+                    AdviceId = 3,
+                    Content = "Pas d'activité physique intense",
+                    Type = "Précaution",
+                    DateStart = DateTime.Now,
+                    DateEnd = null,
+                    FlagIsDeleted = false
+                },
+                new Advice
+                {
+                    AdviceId = 4,
+                    Content = "Uniquement le matin",
+                    Type = "Précaution",
+                    DateStart = DateTime.Now,
+                    DateEnd = null,
+                    FlagIsDeleted = false
+                }
+            );
+
+            modelBuilder.Entity<ProductAdvice>().HasData(
+                new ProductAdvice { ProductId = 4, AdviceId = 1 },
+                new ProductAdvice { ProductId = 4, AdviceId = 4 }
+            );
+
 
             base.OnModelCreating(modelBuilder);
         }

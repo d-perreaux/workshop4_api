@@ -19,8 +19,11 @@ namespace Workshop_API.Migrations
                 {
                     AdviceId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateEnd = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FlagIsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,7 +50,10 @@ namespace Workshop_API.Migrations
                     ProductId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CIP = table.Column<int>(type: "int", nullable: false)
+                    CIP = table.Column<int>(type: "int", nullable: false),
+                    DCI = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Dosage = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FlagIsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -147,6 +153,17 @@ namespace Workshop_API.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Advice",
+                columns: new[] { "AdviceId", "Content", "DateEnd", "DateStart", "FlagIsDeleted", "Type" },
+                values: new object[,]
+                {
+                    { 1, "Pendant les repas", null, new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1879), false, "Posologie" },
+                    { 2, "Se rincer la bouche après utilisation", null, new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1883), false, "Précaution" },
+                    { 3, "Pas d'activité physique intense", null, new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1885), false, "Précaution" },
+                    { 4, "Uniquement le matin", null, new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1888), false, "Précaution" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Pharmacy",
                 columns: new[] { "PharmacyId", "Name" },
                 values: new object[,]
@@ -155,6 +172,27 @@ namespace Workshop_API.Migrations
                     { 2, "Pharmacie de la Mitterie" },
                     { 3, "Pharmacie de la Vigne" },
                     { 4, "Pharmacie Art Nouveau" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Product",
+                columns: new[] { "ProductId", "CIP", "DCI", "Dosage", "FlagIsDelete", "Name" },
+                values: new object[,]
+                {
+                    { 1, 1234567, "Paracetamol", "500mg", false, "Doliprane" },
+                    { 2, 2345678, "Ibuprofen", "400mg", false, "Advil" },
+                    { 3, 2345679, "Propionate de fluticasone", "250µg", false, "Flixotide" },
+                    { 4, 2345677, "Prednisolone", "20mg", false, "Solupred" },
+                    { 5, 2345677, "Lévofloxaxine ", "500mg", false, "Tavanic" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ProductAdvice",
+                columns: new[] { "AdviceId", "ProductId" },
+                values: new object[,]
+                {
+                    { 1, 4 },
+                    { 4, 4 }
                 });
 
             migrationBuilder.CreateIndex(

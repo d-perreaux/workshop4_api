@@ -158,10 +158,11 @@ namespace Workshop_API.Migrations
                 columns: new[] { "AdviceId", "Content", "DateEnd", "DateStart", "FlagIsDeleted", "Type" },
                 values: new object[,]
                 {
-                    { 1, "Pendant les repas", null, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6371), false, "Posologie" },
-                    { 2, "Se rincer la bouche après utilisation", null, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6375), false, "Précaution" },
-                    { 3, "Pas d'activité physique intense", null, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6378), false, "Précaution" },
-                    { 4, "Uniquement le matin", null, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6381), false, "Précaution" }
+                    { 1, "Pendant les repas", null, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6812), false, "Posologie" },
+                    { 2, "Se rincer la bouche après utilisation", null, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6818), false, "Précaution" },
+                    { 3, "Pas d'activité physique intense", null, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6823), false, "Précaution" },
+                    { 4, "Uniquement le matin", null, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6828), false, "Précaution" },
+                    { 5, "4/jour max, 1 toutes les 6h", null, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6833), false, "Précaution" }
                 });
 
             migrationBuilder.InsertData(
@@ -192,9 +193,9 @@ namespace Workshop_API.Migrations
                 columns: new[] { "PrescriptionId", "Date", "PharmacyId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6413), 1 },
-                    { 2, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6415), 2 },
-                    { 3, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6417), 1 }
+                    { 1, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6893), 1 },
+                    { 2, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6897), 2 },
+                    { 3, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6900), 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -202,8 +203,28 @@ namespace Workshop_API.Migrations
                 columns: new[] { "AdviceId", "ProductId" },
                 values: new object[,]
                 {
+                    { 5, 1 },
                     { 1, 4 },
                     { 4, 4 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PrescriptionProducts",
+                columns: new[] { "PrescriptionId", "ProductId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 1, 4 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PrescriptionProductAdvice",
+                columns: new[] { "AdviceId", "PrescriptionId", "ProductId" },
+                values: new object[,]
+                {
+                    { 5, 1, 1 },
+                    { 1, 1, 4 },
+                    { 4, 1, 4 }
                 });
 
             migrationBuilder.CreateIndex(

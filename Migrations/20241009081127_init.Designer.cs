@@ -12,7 +12,7 @@ using api.Data;
 namespace Workshop_API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241009060321_init")]
+    [Migration("20241009081127_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -59,7 +59,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 1,
                             Content = "Pendant les repas",
-                            DateStart = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6371),
+                            DateStart = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6812),
                             FlagIsDeleted = false,
                             Type = "Posologie"
                         },
@@ -67,7 +67,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 2,
                             Content = "Se rincer la bouche après utilisation",
-                            DateStart = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6375),
+                            DateStart = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6818),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -75,7 +75,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 3,
                             Content = "Pas d'activité physique intense",
-                            DateStart = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6378),
+                            DateStart = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6823),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -83,7 +83,15 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 4,
                             Content = "Uniquement le matin",
-                            DateStart = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6381),
+                            DateStart = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6828),
+                            FlagIsDeleted = false,
+                            Type = "Précaution"
+                        },
+                        new
+                        {
+                            AdviceId = 5,
+                            Content = "4/jour max, 1 toutes les 6h",
+                            DateStart = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6833),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         });
@@ -152,19 +160,19 @@ namespace Workshop_API.Migrations
                         new
                         {
                             PrescriptionId = 1,
-                            Date = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6413),
+                            Date = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6893),
                             PharmacyId = 1
                         },
                         new
                         {
                             PrescriptionId = 2,
-                            Date = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6415),
+                            Date = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6897),
                             PharmacyId = 2
                         },
                         new
                         {
                             PrescriptionId = 3,
-                            Date = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6417),
+                            Date = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6900),
                             PharmacyId = 1
                         });
                 });
@@ -182,6 +190,18 @@ namespace Workshop_API.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("PrescriptionProducts");
+
+                    b.HasData(
+                        new
+                        {
+                            PrescriptionId = 1,
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            PrescriptionId = 1,
+                            ProductId = 4
+                        });
                 });
 
             modelBuilder.Entity("api.Models.PrescriptionProductAdvice", b =>
@@ -200,6 +220,26 @@ namespace Workshop_API.Migrations
                     b.HasIndex("AdviceId");
 
                     b.ToTable("PrescriptionProductAdvice");
+
+                    b.HasData(
+                        new
+                        {
+                            PrescriptionId = 1,
+                            ProductId = 1,
+                            AdviceId = 5
+                        },
+                        new
+                        {
+                            PrescriptionId = 1,
+                            ProductId = 4,
+                            AdviceId = 4
+                        },
+                        new
+                        {
+                            PrescriptionId = 1,
+                            ProductId = 4,
+                            AdviceId = 1
+                        });
                 });
 
             modelBuilder.Entity("api.Models.Product", b =>
@@ -304,6 +344,11 @@ namespace Workshop_API.Migrations
                         {
                             ProductId = 4,
                             AdviceId = 4
+                        },
+                        new
+                        {
+                            ProductId = 1,
+                            AdviceId = 5
                         });
                 });
 

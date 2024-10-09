@@ -12,6 +12,6 @@ namespace api.Models {
         public int AdviceId { get; set; }
 
         public PrescriptionProduct? PrescriptionProduct{ get; set; }
-        public Advice Advice { get; set; } = new Advice();
+        public Advice Advice { get; set; }
     }
 }

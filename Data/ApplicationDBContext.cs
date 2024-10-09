@@ -122,12 +122,22 @@ namespace api.Data
                     DateStart = DateTime.Now,
                     DateEnd = null,
                     FlagIsDeleted = false
+                },
+                new Advice
+                {
+                    AdviceId = 5,
+                    Content = "4/jour max, 1 toutes les 6h",
+                    Type = "Précaution",
+                    DateStart = DateTime.Now,
+                    DateEnd = null,
+                    FlagIsDeleted = false
                 }
             );
 
             modelBuilder.Entity<ProductAdvice>().HasData(
                 new ProductAdvice { ProductId = 4, AdviceId = 1 },
-                new ProductAdvice { ProductId = 4, AdviceId = 4 }
+                new ProductAdvice { ProductId = 4, AdviceId = 4 },
+                new ProductAdvice { ProductId = 1, AdviceId = 5 }
             );
 
             modelBuilder.Entity<Prescription>().HasData(
@@ -151,7 +161,16 @@ namespace api.Data
                 }
             );
 
+            modelBuilder.Entity<PrescriptionProduct>().HasData(
+                new PrescriptionProduct { PrescriptionId = 1, ProductId = 1 },
+                new PrescriptionProduct { PrescriptionId = 1, ProductId = 4 }
+            );
 
+            modelBuilder.Entity<PrescriptionProductAdvice>().HasData(
+                new PrescriptionProductAdvice { PrescriptionId = 1, ProductId = 1, AdviceId = 5 },
+                new PrescriptionProductAdvice { PrescriptionId = 1, ProductId = 4, AdviceId = 4 },
+                new PrescriptionProductAdvice { PrescriptionId = 1, ProductId = 4, AdviceId = 1 }
+            );
 
             base.OnModelCreating(modelBuilder);
         }

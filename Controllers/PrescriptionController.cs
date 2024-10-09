@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using api.Data;
 using api.Models;
 using api.Dtos.Prescription;
+using api.Dtos.Product;
+using api.Dtos.Advice;
 using api.Mappers;
 
 namespace api.Controllers
@@ -110,5 +112,90 @@ namespace api.Controllers
 
             return NoContent();
         }
+
+        // GET: api/prescriptions/{id}/products
+        [HttpGet("{id}/products")]
+        public async Task<IActionResult> GetProductsByPrescriptionId([FromRoute] int id)
+        {
+            var prescription = await _context.Prescription
+                .Include(p => p.PrescriptionProducts)
+                    .ThenInclude(pp => pp.Product)
+                .FirstOrDefaultAsync(p => p.PrescriptionId == id);
+
+            if (prescription == null)
+            {
+                return NotFound();
+            }
+
+            var products = prescription.PrescriptionProducts.Select(pp => pp.Product.ToProductDto());
+
+            return Ok(products);
+        }
+
+        // GET: api/prescriptions/{id}/advices
+        [HttpGet("{id}/advices")]
+        public async Task<IActionResult> GetAdvicesByPrescriptionId([FromRoute] int id)
+        {
+            var prescription = await _context.Prescription
+                .Include(p => p.PrescriptionProducts)
+                    .ThenInclude(pp => pp.PrescriptionProductAdvices)
+                        .ThenInclude(ppa => ppa.Advice)
+                .FirstOrDefaultAsync(p => p.PrescriptionId == id);
+
+            if (prescription == null)
+            {
+                return NotFound();
+            }
+
+            var advices = prescription.PrescriptionProducts
+                .SelectMany(pp => pp.PrescriptionProductAdvices)
+                .Select(ppa => ppa.Advice.ToAdviceDto())
+                .Distinct();
+
+            return Ok(advices);
+        }
+
+        // GET: api/prescriptions/{id}/details
+        [HttpGet("{id}/details")]
+        public async Task<IActionResult> GetPrescriptionDetails([FromRoute] int id)
+        {
+            var prescription = await _context.Prescription
+                .AsNoTracking()
+                .Include(p => p.PrescriptionProducts)
+                    .ThenInclude(pp => pp.Product)
+                .Include(p => p.PrescriptionProducts)
+                    .ThenInclude(pp => pp.PrescriptionProductAdvices)
+                        .ThenInclude(ppa => ppa.Advice)
+                .FirstOrDefaultAsync(p => p.PrescriptionId == id);
+
+            if (prescription == null)
+            {
+                return NotFound();
+            }
+
+            var prescriptionDetailsDto = new PrescriptionDetailsDto
+            {
+                PrescriptionId = prescription.PrescriptionId,
+                PharmacyId = prescription.PharmacyId,
+                Date = prescription.Date,
+                Products = prescription.PrescriptionProducts.Select(pp => new ProductWithAdvicesDto
+                {
+                    ProductId = pp.ProductId,
+                    Name = pp.Product.Name,
+                    // Ajoutez d'autres propriétés du produit si nécessaire
+                    Advices = pp.PrescriptionProductAdvices.Select(ppa => new AdviceDto
+                    {
+                        AdviceId = ppa.AdviceId,
+                        Content = ppa.Advice.Content
+                        // Ajoutez d'autres propriétés du conseil si nécessaire
+                    }).ToList()
+                }).ToList()
+            };
+
+            return Ok(prescriptionDetailsDto);
+        }
+
+
+
     }
 }

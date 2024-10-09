@@ -66,7 +66,8 @@ namespace Workshop_API.Migrations
                 {
                     PrescriptionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PharmacyId = table.Column<int>(type: "int", nullable: false)
+                    PharmacyId = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,7 +77,7 @@ namespace Workshop_API.Migrations
                         column: x => x.PharmacyId,
                         principalTable: "Pharmacy",
                         principalColumn: "PharmacyId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -157,10 +158,10 @@ namespace Workshop_API.Migrations
                 columns: new[] { "AdviceId", "Content", "DateEnd", "DateStart", "FlagIsDeleted", "Type" },
                 values: new object[,]
                 {
-                    { 1, "Pendant les repas", null, new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1879), false, "Posologie" },
-                    { 2, "Se rincer la bouche après utilisation", null, new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1883), false, "Précaution" },
-                    { 3, "Pas d'activité physique intense", null, new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1885), false, "Précaution" },
-                    { 4, "Uniquement le matin", null, new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1888), false, "Précaution" }
+                    { 1, "Pendant les repas", null, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6371), false, "Posologie" },
+                    { 2, "Se rincer la bouche après utilisation", null, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6375), false, "Précaution" },
+                    { 3, "Pas d'activité physique intense", null, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6378), false, "Précaution" },
+                    { 4, "Uniquement le matin", null, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6381), false, "Précaution" }
                 });
 
             migrationBuilder.InsertData(
@@ -184,6 +185,16 @@ namespace Workshop_API.Migrations
                     { 3, 2345679, "Propionate de fluticasone", "250µg", false, "Flixotide" },
                     { 4, 2345677, "Prednisolone", "20mg", false, "Solupred" },
                     { 5, 2345677, "Lévofloxaxine ", "500mg", false, "Tavanic" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Prescription",
+                columns: new[] { "PrescriptionId", "Date", "PharmacyId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6413), 1 },
+                    { 2, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6415), 2 },
+                    { 3, new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6417), 1 }
                 });
 
             migrationBuilder.InsertData(

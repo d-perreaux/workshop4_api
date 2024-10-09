@@ -107,6 +107,59 @@ namespace api.Controllers
             return Ok(advices);
         }
 
+        // POST: api/products/{productId}/advices/{adviceId}
+        [HttpPost("{productId}/advices/{adviceId}")]
+        public async Task<IActionResult> AddAdviceToProduct([FromRoute] int productId, [FromRoute] int adviceId)
+        {
+            var product = await _context.Product.FindAsync(productId);
+            var advice = await _context.Advice.FindAsync(adviceId);
+
+            if (product == null || advice == null)
+            {
+                return NotFound();
+            }
+
+            // Vérifier si l'association existe déjà
+            var existingAssociation = await _context.ProductAdvice
+                .FirstOrDefaultAsync(pa => pa.ProductId == productId && pa.AdviceId == adviceId);
+
+            if (existingAssociation != null)
+            {
+                return BadRequest("L'association existe déjà.");
+            }
+
+            var productAdvice = new ProductAdvice
+            {
+                ProductId = productId,
+                AdviceId = adviceId
+            };
+
+            await _context.ProductAdvice.AddAsync(productAdvice);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // DELETE: api/products/{productId}/advices/{adviceId}
+        [HttpDelete("{productId}/advices/{adviceId}")]
+        public async Task<IActionResult> RemoveAdviceFromProduct([FromRoute] int productId, [FromRoute] int adviceId)
+        {
+            var productAdvice = await _context.ProductAdvice
+                .FirstOrDefaultAsync(pa => pa.ProductId == productId && pa.AdviceId == adviceId);
+
+            if (productAdvice == null)
+            {
+                return NotFound();
+            }
+
+            _context.ProductAdvice.Remove(productAdvice);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
+
 
     }
 }

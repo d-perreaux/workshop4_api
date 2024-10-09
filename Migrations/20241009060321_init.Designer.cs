@@ -12,7 +12,7 @@ using api.Data;
 namespace Workshop_API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241009053720_init")]
+    [Migration("20241009060321_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -59,7 +59,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 1,
                             Content = "Pendant les repas",
-                            DateStart = new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1879),
+                            DateStart = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6371),
                             FlagIsDeleted = false,
                             Type = "Posologie"
                         },
@@ -67,7 +67,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 2,
                             Content = "Se rincer la bouche après utilisation",
-                            DateStart = new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1883),
+                            DateStart = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6375),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -75,7 +75,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 3,
                             Content = "Pas d'activité physique intense",
-                            DateStart = new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1885),
+                            DateStart = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6378),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -83,7 +83,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 4,
                             Content = "Uniquement le matin",
-                            DateStart = new DateTime(2024, 10, 9, 7, 37, 20, 422, DateTimeKind.Local).AddTicks(1888),
+                            DateStart = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6381),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         });
@@ -130,11 +130,14 @@ namespace Workshop_API.Migrations
 
             modelBuilder.Entity("api.Models.Prescription", b =>
                 {
-                    b.Property<int?>("PrescriptionId")
+                    b.Property<int>("PrescriptionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("PrescriptionId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrescriptionId"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("PharmacyId")
                         .HasColumnType("int");
@@ -144,6 +147,26 @@ namespace Workshop_API.Migrations
                     b.HasIndex("PharmacyId");
 
                     b.ToTable("Prescription");
+
+                    b.HasData(
+                        new
+                        {
+                            PrescriptionId = 1,
+                            Date = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6413),
+                            PharmacyId = 1
+                        },
+                        new
+                        {
+                            PrescriptionId = 2,
+                            Date = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6415),
+                            PharmacyId = 2
+                        },
+                        new
+                        {
+                            PrescriptionId = 3,
+                            Date = new DateTime(2024, 10, 9, 8, 3, 21, 569, DateTimeKind.Local).AddTicks(6417),
+                            PharmacyId = 1
+                        });
                 });
 
             modelBuilder.Entity("api.Models.PrescriptionProduct", b =>
@@ -289,7 +312,7 @@ namespace Workshop_API.Migrations
                     b.HasOne("api.Models.Pharmacy", "Pharmacy")
                         .WithMany("Prescriptions")
                         .HasForeignKey("PharmacyId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Pharmacy");

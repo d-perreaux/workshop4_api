@@ -34,6 +34,17 @@ namespace api.Data
 
             modelBuilder.Entity<ProductAdvice>().HasOne(pc => pc.Advice).WithMany(a => a.ProductAdvices).HasForeignKey(pc => pc.AdviceId);
 
+            // Prescription
+            modelBuilder.Entity<Prescription>()
+                .HasKey(p => p.PrescriptionId);
+
+            modelBuilder.Entity<Prescription>()
+                .HasOne(p => p.Pharmacy)
+                .WithMany(ph => ph.Prescriptions)
+                .HasForeignKey(p => p.PharmacyId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
             // PrescriptionProduct
             modelBuilder.Entity<PrescriptionProduct>().HasKey(pp => new { pp.PrescriptionId, pp.ProductId });
 
@@ -118,6 +129,28 @@ namespace api.Data
                 new ProductAdvice { ProductId = 4, AdviceId = 1 },
                 new ProductAdvice { ProductId = 4, AdviceId = 4 }
             );
+
+            modelBuilder.Entity<Prescription>().HasData(
+                new Prescription
+                {
+                    PrescriptionId = 1,
+                    PharmacyId = 1,
+                    Date = DateTime.Now
+                },
+                new Prescription
+                {
+                    PrescriptionId = 2,
+                    PharmacyId = 2,
+                    Date = DateTime.Now
+                },
+                new Prescription
+                {
+                    PrescriptionId = 3,
+                    PharmacyId = 1,
+                    Date = DateTime.Now
+                }
+            );
+
 
 
             base.OnModelCreating(modelBuilder);

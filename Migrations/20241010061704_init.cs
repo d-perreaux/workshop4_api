@@ -50,7 +50,7 @@ namespace Workshop_API.Migrations
                     ProductId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CIP = table.Column<int>(type: "int", nullable: false),
+                    CIP = table.Column<long>(type: "bigint", nullable: false),
                     DCI = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Dosage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FlagIsDelete = table.Column<bool>(type: "bit", nullable: false)
@@ -158,11 +158,17 @@ namespace Workshop_API.Migrations
                 columns: new[] { "AdviceId", "Content", "DateEnd", "DateStart", "FlagIsDeleted", "Type" },
                 values: new object[,]
                 {
-                    { 1, "Pendant les repas", null, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6812), false, "Posologie" },
-                    { 2, "Se rincer la bouche après utilisation", null, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6818), false, "Précaution" },
-                    { 3, "Pas d'activité physique intense", null, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6823), false, "Précaution" },
-                    { 4, "Uniquement le matin", null, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6828), false, "Précaution" },
-                    { 5, "4/jour max, 1 toutes les 6h", null, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6833), false, "Précaution" }
+                    { 1, "Pendant les repas", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(321), false, "Posologie" },
+                    { 2, "Se rincer la bouche après utilisation", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(326), false, "Précaution" },
+                    { 3, "Pas d'activité physique intense", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(328), false, "Précaution" },
+                    { 4, "Uniquement le matin", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(331), false, "Précaution" },
+                    { 5, "4/jour max, 1 toutes les 6h", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(333), false, "Précaution" },
+                    { 9, "Ne pas boire de thé dans l'heure qui suit", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(335), false, "Précaution" },
+                    { 10, "A prendre avec un grand verre d'eau du robinet", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(338), false, "Précaution" },
+                    { 11, "Ne pas s'allonger dans les 30 minutes", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(340), false, "Précaution" },
+                    { 12, "Ne pas écraser, ne pas croquer, ne pas dissoudre", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(342), false, "Précaution" },
+                    { 13, "4 CàS/jour, la dernière avant 17h", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(345), false, "Précaution" },
+                    { 14, "Espacer de 2h la prise des autres médicaments", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(347), false, "Précaution" }
                 });
 
             migrationBuilder.InsertData(
@@ -181,11 +187,15 @@ namespace Workshop_API.Migrations
                 columns: new[] { "ProductId", "CIP", "DCI", "Dosage", "FlagIsDelete", "Name" },
                 values: new object[,]
                 {
-                    { 1, 1234567, "Paracetamol", "500mg", false, "Doliprane" },
-                    { 2, 2345678, "Ibuprofen", "400mg", false, "Advil" },
-                    { 3, 2345679, "Propionate de fluticasone", "250µg", false, "Flixotide" },
-                    { 4, 2345677, "Prednisolone", "20mg", false, "Solupred" },
-                    { 5, 2345677, "Lévofloxaxine ", "500mg", false, "Tavanic" }
+                    { 1, 1234567L, "Paracetamol", "500mg", false, "Doliprane" },
+                    { 2, 2345678L, "Ibuprofen", "400mg", false, "Advil" },
+                    { 3, 2345679L, "Propionate de fluticasone", "250µg", false, "Flixotide" },
+                    { 4, 2345677L, "Prednisolone", "20mg", false, "Solupred" },
+                    { 5, 2345677L, "Lévofloxaxine", "500mg", false, "Tavanic" },
+                    { 6, 3400933518004L, "Sulfate ferreux", "80mg", false, "Tardyferon" },
+                    { 7, 3400935956378L, "Acide alendronique", "70mg", false, "Fosamax" },
+                    { 8, 3400935956878L, "Carbocistéine ", "5%", false, "Bronchokod" },
+                    { 9, 3400931923077L, "Diosmectite ", "3g", false, "Smecta" }
                 });
 
             migrationBuilder.InsertData(
@@ -193,9 +203,9 @@ namespace Workshop_API.Migrations
                 columns: new[] { "PrescriptionId", "Date", "PharmacyId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6893), 1 },
-                    { 2, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6897), 2 },
-                    { 3, new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6900), 1 }
+                    { 1, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(386), 1 },
+                    { 2, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(389), 2 },
+                    { 3, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(391), 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -205,7 +215,13 @@ namespace Workshop_API.Migrations
                 {
                     { 5, 1 },
                     { 1, 4 },
-                    { 4, 4 }
+                    { 4, 4 },
+                    { 9, 6 },
+                    { 10, 7 },
+                    { 11, 7 },
+                    { 12, 7 },
+                    { 13, 8 },
+                    { 14, 9 }
                 });
 
             migrationBuilder.InsertData(

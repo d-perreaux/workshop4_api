@@ -182,12 +182,15 @@ namespace api.Controllers
                 {
                     ProductId = pp.ProductId,
                     Name = pp.Product.Name,
-                    // Ajoutez d'autres propriétés du produit si nécessaire
+                    CIP = pp.Product.CIP,
+                    DCI = pp.Product.DCI,
+                    Dosage = pp.Product.Dosage,
+
                     Advices = pp.PrescriptionProductAdvices.Select(ppa => new AdviceDto
                     {
                         AdviceId = ppa.AdviceId,
                         Content = ppa.Advice.Content
-                        // Ajoutez d'autres propriétés du conseil si nécessaire
+
                     }).ToList()
                 }).ToList()
             };

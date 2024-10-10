@@ -9,7 +9,7 @@ namespace api.Dtos.Product
     {
         public string Name { get; set; } = string.Empty;
 
-        public int CIP { get; set; }
+        public long CIP { get; set; }
 
         public string DCI { get; set; } = string.Empty;
 

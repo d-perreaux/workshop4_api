@@ -12,7 +12,7 @@ using api.Data;
 namespace Workshop_API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241009081127_init")]
+    [Migration("20241010061704_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -59,7 +59,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 1,
                             Content = "Pendant les repas",
-                            DateStart = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6812),
+                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(321),
                             FlagIsDeleted = false,
                             Type = "Posologie"
                         },
@@ -67,7 +67,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 2,
                             Content = "Se rincer la bouche après utilisation",
-                            DateStart = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6818),
+                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(326),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -75,7 +75,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 3,
                             Content = "Pas d'activité physique intense",
-                            DateStart = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6823),
+                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(328),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -83,7 +83,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 4,
                             Content = "Uniquement le matin",
-                            DateStart = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6828),
+                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(331),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -91,7 +91,55 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 5,
                             Content = "4/jour max, 1 toutes les 6h",
-                            DateStart = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6833),
+                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(333),
+                            FlagIsDeleted = false,
+                            Type = "Précaution"
+                        },
+                        new
+                        {
+                            AdviceId = 9,
+                            Content = "Ne pas boire de thé dans l'heure qui suit",
+                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(335),
+                            FlagIsDeleted = false,
+                            Type = "Précaution"
+                        },
+                        new
+                        {
+                            AdviceId = 10,
+                            Content = "A prendre avec un grand verre d'eau du robinet",
+                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(338),
+                            FlagIsDeleted = false,
+                            Type = "Précaution"
+                        },
+                        new
+                        {
+                            AdviceId = 11,
+                            Content = "Ne pas s'allonger dans les 30 minutes",
+                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(340),
+                            FlagIsDeleted = false,
+                            Type = "Précaution"
+                        },
+                        new
+                        {
+                            AdviceId = 12,
+                            Content = "Ne pas écraser, ne pas croquer, ne pas dissoudre",
+                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(342),
+                            FlagIsDeleted = false,
+                            Type = "Précaution"
+                        },
+                        new
+                        {
+                            AdviceId = 13,
+                            Content = "4 CàS/jour, la dernière avant 17h",
+                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(345),
+                            FlagIsDeleted = false,
+                            Type = "Précaution"
+                        },
+                        new
+                        {
+                            AdviceId = 14,
+                            Content = "Espacer de 2h la prise des autres médicaments",
+                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(347),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         });
@@ -160,19 +208,19 @@ namespace Workshop_API.Migrations
                         new
                         {
                             PrescriptionId = 1,
-                            Date = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6893),
+                            Date = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(386),
                             PharmacyId = 1
                         },
                         new
                         {
                             PrescriptionId = 2,
-                            Date = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6897),
+                            Date = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(389),
                             PharmacyId = 2
                         },
                         new
                         {
                             PrescriptionId = 3,
-                            Date = new DateTime(2024, 10, 9, 10, 11, 24, 552, DateTimeKind.Local).AddTicks(6900),
+                            Date = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(391),
                             PharmacyId = 1
                         });
                 });
@@ -250,8 +298,8 @@ namespace Workshop_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
-                    b.Property<int>("CIP")
-                        .HasColumnType("int");
+                    b.Property<long>("CIP")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("DCI")
                         .IsRequired()
@@ -276,7 +324,7 @@ namespace Workshop_API.Migrations
                         new
                         {
                             ProductId = 1,
-                            CIP = 1234567,
+                            CIP = 1234567L,
                             DCI = "Paracetamol",
                             Dosage = "500mg",
                             FlagIsDelete = false,
@@ -285,7 +333,7 @@ namespace Workshop_API.Migrations
                         new
                         {
                             ProductId = 2,
-                            CIP = 2345678,
+                            CIP = 2345678L,
                             DCI = "Ibuprofen",
                             Dosage = "400mg",
                             FlagIsDelete = false,
@@ -294,7 +342,7 @@ namespace Workshop_API.Migrations
                         new
                         {
                             ProductId = 3,
-                            CIP = 2345679,
+                            CIP = 2345679L,
                             DCI = "Propionate de fluticasone",
                             Dosage = "250µg",
                             FlagIsDelete = false,
@@ -303,7 +351,7 @@ namespace Workshop_API.Migrations
                         new
                         {
                             ProductId = 4,
-                            CIP = 2345677,
+                            CIP = 2345677L,
                             DCI = "Prednisolone",
                             Dosage = "20mg",
                             FlagIsDelete = false,
@@ -312,11 +360,47 @@ namespace Workshop_API.Migrations
                         new
                         {
                             ProductId = 5,
-                            CIP = 2345677,
-                            DCI = "Lévofloxaxine ",
+                            CIP = 2345677L,
+                            DCI = "Lévofloxaxine",
                             Dosage = "500mg",
                             FlagIsDelete = false,
                             Name = "Tavanic"
+                        },
+                        new
+                        {
+                            ProductId = 6,
+                            CIP = 3400933518004L,
+                            DCI = "Sulfate ferreux",
+                            Dosage = "80mg",
+                            FlagIsDelete = false,
+                            Name = "Tardyferon"
+                        },
+                        new
+                        {
+                            ProductId = 7,
+                            CIP = 3400935956378L,
+                            DCI = "Acide alendronique",
+                            Dosage = "70mg",
+                            FlagIsDelete = false,
+                            Name = "Fosamax"
+                        },
+                        new
+                        {
+                            ProductId = 8,
+                            CIP = 3400935956878L,
+                            DCI = "Carbocistéine ",
+                            Dosage = "5%",
+                            FlagIsDelete = false,
+                            Name = "Bronchokod"
+                        },
+                        new
+                        {
+                            ProductId = 9,
+                            CIP = 3400931923077L,
+                            DCI = "Diosmectite ",
+                            Dosage = "3g",
+                            FlagIsDelete = false,
+                            Name = "Smecta"
                         });
                 });
 
@@ -349,6 +433,36 @@ namespace Workshop_API.Migrations
                         {
                             ProductId = 1,
                             AdviceId = 5
+                        },
+                        new
+                        {
+                            ProductId = 6,
+                            AdviceId = 9
+                        },
+                        new
+                        {
+                            ProductId = 7,
+                            AdviceId = 10
+                        },
+                        new
+                        {
+                            ProductId = 7,
+                            AdviceId = 11
+                        },
+                        new
+                        {
+                            ProductId = 7,
+                            AdviceId = 12
+                        },
+                        new
+                        {
+                            ProductId = 8,
+                            AdviceId = 13
+                        },
+                        new
+                        {
+                            ProductId = 9,
+                            AdviceId = 14
                         });
                 });
 

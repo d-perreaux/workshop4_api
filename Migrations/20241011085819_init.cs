@@ -158,17 +158,17 @@ namespace Workshop_API.Migrations
                 columns: new[] { "AdviceId", "Content", "DateEnd", "DateStart", "FlagIsDeleted", "Type" },
                 values: new object[,]
                 {
-                    { 1, "Pendant les repas", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(321), false, "Posologie" },
-                    { 2, "Se rincer la bouche après utilisation", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(326), false, "Précaution" },
-                    { 3, "Pas d'activité physique intense", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(328), false, "Précaution" },
-                    { 4, "Uniquement le matin", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(331), false, "Précaution" },
-                    { 5, "4/jour max, 1 toutes les 6h", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(333), false, "Précaution" },
-                    { 9, "Ne pas boire de thé dans l'heure qui suit", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(335), false, "Précaution" },
-                    { 10, "A prendre avec un grand verre d'eau du robinet", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(338), false, "Précaution" },
-                    { 11, "Ne pas s'allonger dans les 30 minutes", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(340), false, "Précaution" },
-                    { 12, "Ne pas écraser, ne pas croquer, ne pas dissoudre", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(342), false, "Précaution" },
-                    { 13, "4 CàS/jour, la dernière avant 17h", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(345), false, "Précaution" },
-                    { 14, "Espacer de 2h la prise des autres médicaments", null, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(347), false, "Précaution" }
+                    { 1, "Pendant les repas", null, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9234), false, "Posologie" },
+                    { 2, "Se rincer la bouche après utilisation", null, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9241), false, "Précaution" },
+                    { 3, "Pas d'activité physique intense", null, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9246), false, "Précaution" },
+                    { 4, "Uniquement le matin", null, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9252), false, "Précaution" },
+                    { 5, "4/jour max, 1 toutes les 6h", null, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9258), false, "Précaution" },
+                    { 9, "Ne pas boire de thé dans l'heure qui suit", null, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9264), false, "Précaution" },
+                    { 10, "A prendre avec un grand verre d'eau du robinet", null, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9270), false, "Précaution" },
+                    { 11, "Ne pas s'allonger dans les 30 minutes", null, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9275), false, "Précaution" },
+                    { 12, "Ne pas écraser, ne pas croquer, ne pas dissoudre", null, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9282), false, "Précaution" },
+                    { 13, "4 CàS/jour, la dernière avant 17h", null, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9288), false, "Précaution" },
+                    { 14, "Espacer de 2h la prise des autres médicaments", null, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9293), false, "Précaution" }
                 });
 
             migrationBuilder.InsertData(
@@ -203,9 +203,9 @@ namespace Workshop_API.Migrations
                 columns: new[] { "PrescriptionId", "Date", "PharmacyId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(386), 1 },
-                    { 2, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(389), 2 },
-                    { 3, new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(391), 1 }
+                    { 1, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9384), 1 },
+                    { 2, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9389), 2 },
+                    { 3, new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9392), 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -216,6 +216,7 @@ namespace Workshop_API.Migrations
                     { 5, 1 },
                     { 1, 4 },
                     { 4, 4 },
+                    { 3, 5 },
                     { 9, 6 },
                     { 10, 7 },
                     { 11, 7 },
@@ -230,7 +231,9 @@ namespace Workshop_API.Migrations
                 values: new object[,]
                 {
                     { 1, 1 },
-                    { 1, 4 }
+                    { 1, 4 },
+                    { 1, 5 },
+                    { 1, 7 }
                 });
 
             migrationBuilder.InsertData(
@@ -239,8 +242,11 @@ namespace Workshop_API.Migrations
                 values: new object[,]
                 {
                     { 5, 1, 1 },
-                    { 1, 1, 4 },
-                    { 4, 1, 4 }
+                    { 4, 1, 4 },
+                    { 3, 1, 5 },
+                    { 10, 1, 7 },
+                    { 11, 1, 7 },
+                    { 12, 1, 7 }
                 });
 
             migrationBuilder.CreateIndex(

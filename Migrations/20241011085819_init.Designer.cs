@@ -12,7 +12,7 @@ using api.Data;
 namespace Workshop_API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241010061704_init")]
+    [Migration("20241011085819_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -59,7 +59,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 1,
                             Content = "Pendant les repas",
-                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(321),
+                            DateStart = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9234),
                             FlagIsDeleted = false,
                             Type = "Posologie"
                         },
@@ -67,7 +67,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 2,
                             Content = "Se rincer la bouche après utilisation",
-                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(326),
+                            DateStart = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9241),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -75,7 +75,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 3,
                             Content = "Pas d'activité physique intense",
-                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(328),
+                            DateStart = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9246),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -83,7 +83,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 4,
                             Content = "Uniquement le matin",
-                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(331),
+                            DateStart = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9252),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -91,7 +91,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 5,
                             Content = "4/jour max, 1 toutes les 6h",
-                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(333),
+                            DateStart = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9258),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -99,7 +99,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 9,
                             Content = "Ne pas boire de thé dans l'heure qui suit",
-                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(335),
+                            DateStart = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9264),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -107,7 +107,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 10,
                             Content = "A prendre avec un grand verre d'eau du robinet",
-                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(338),
+                            DateStart = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9270),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -115,7 +115,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 11,
                             Content = "Ne pas s'allonger dans les 30 minutes",
-                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(340),
+                            DateStart = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9275),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -123,7 +123,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 12,
                             Content = "Ne pas écraser, ne pas croquer, ne pas dissoudre",
-                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(342),
+                            DateStart = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9282),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -131,7 +131,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 13,
                             Content = "4 CàS/jour, la dernière avant 17h",
-                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(345),
+                            DateStart = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9288),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         },
@@ -139,7 +139,7 @@ namespace Workshop_API.Migrations
                         {
                             AdviceId = 14,
                             Content = "Espacer de 2h la prise des autres médicaments",
-                            DateStart = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(347),
+                            DateStart = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9293),
                             FlagIsDeleted = false,
                             Type = "Précaution"
                         });
@@ -208,19 +208,19 @@ namespace Workshop_API.Migrations
                         new
                         {
                             PrescriptionId = 1,
-                            Date = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(386),
+                            Date = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9384),
                             PharmacyId = 1
                         },
                         new
                         {
                             PrescriptionId = 2,
-                            Date = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(389),
+                            Date = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9389),
                             PharmacyId = 2
                         },
                         new
                         {
                             PrescriptionId = 3,
-                            Date = new DateTime(2024, 10, 10, 8, 17, 4, 426, DateTimeKind.Local).AddTicks(391),
+                            Date = new DateTime(2024, 10, 11, 10, 58, 19, 183, DateTimeKind.Local).AddTicks(9392),
                             PharmacyId = 1
                         });
                 });
@@ -249,6 +249,16 @@ namespace Workshop_API.Migrations
                         {
                             PrescriptionId = 1,
                             ProductId = 4
+                        },
+                        new
+                        {
+                            PrescriptionId = 1,
+                            ProductId = 5
+                        },
+                        new
+                        {
+                            PrescriptionId = 1,
+                            ProductId = 7
                         });
                 });
 
@@ -285,8 +295,26 @@ namespace Workshop_API.Migrations
                         new
                         {
                             PrescriptionId = 1,
-                            ProductId = 4,
-                            AdviceId = 1
+                            ProductId = 5,
+                            AdviceId = 3
+                        },
+                        new
+                        {
+                            PrescriptionId = 1,
+                            ProductId = 7,
+                            AdviceId = 10
+                        },
+                        new
+                        {
+                            PrescriptionId = 1,
+                            ProductId = 7,
+                            AdviceId = 11
+                        },
+                        new
+                        {
+                            PrescriptionId = 1,
+                            ProductId = 7,
+                            AdviceId = 12
                         });
                 });
 
@@ -463,6 +491,11 @@ namespace Workshop_API.Migrations
                         {
                             ProductId = 9,
                             AdviceId = 14
+                        },
+                        new
+                        {
+                            ProductId = 5,
+                            AdviceId = 3
                         });
                 });
 

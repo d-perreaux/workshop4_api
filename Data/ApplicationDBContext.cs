@@ -202,7 +202,8 @@ namespace api.Data
                 new ProductAdvice { ProductId = 7, AdviceId = 11 },
                 new ProductAdvice { ProductId = 7, AdviceId = 12 },
                 new ProductAdvice { ProductId = 8, AdviceId = 13 },
-                new ProductAdvice { ProductId = 9, AdviceId = 14 }
+                new ProductAdvice { ProductId = 9, AdviceId = 14 },
+                new ProductAdvice { ProductId = 5, AdviceId = 3 }
             );
 
             modelBuilder.Entity<Prescription>().HasData(
@@ -228,13 +229,18 @@ namespace api.Data
 
             modelBuilder.Entity<PrescriptionProduct>().HasData(
                 new PrescriptionProduct { PrescriptionId = 1, ProductId = 1 },
-                new PrescriptionProduct { PrescriptionId = 1, ProductId = 4 }
+                new PrescriptionProduct { PrescriptionId = 1, ProductId = 4 },
+                new PrescriptionProduct { PrescriptionId = 1, ProductId = 5 },
+                new PrescriptionProduct { PrescriptionId = 1, ProductId = 7 }
             );
 
             modelBuilder.Entity<PrescriptionProductAdvice>().HasData(
                 new PrescriptionProductAdvice { PrescriptionId = 1, ProductId = 1, AdviceId = 5 },
                 new PrescriptionProductAdvice { PrescriptionId = 1, ProductId = 4, AdviceId = 4 },
-                new PrescriptionProductAdvice { PrescriptionId = 1, ProductId = 4, AdviceId = 1 }
+                new PrescriptionProductAdvice { PrescriptionId = 1, ProductId = 5, AdviceId = 3 },
+                new PrescriptionProductAdvice { PrescriptionId = 1, ProductId = 7, AdviceId = 10 },
+                new PrescriptionProductAdvice { PrescriptionId = 1, ProductId = 7, AdviceId = 11 },
+                new PrescriptionProductAdvice { PrescriptionId = 1, ProductId = 7, AdviceId = 12 }
             );
 
             base.OnModelCreating(modelBuilder);
